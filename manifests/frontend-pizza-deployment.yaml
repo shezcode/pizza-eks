@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pizza-web
-        image: REPLACE_WITH_DOCKERHUB_USER/pizza-frontend:00
+        image: shezcode/pizza-frontend:00
         imagePullPolicy: Always
         ports:
         - containerPort: 80

@@ -2,12 +2,20 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend-pizza-svc
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:658280525416:certificate/c5f37924-aa5b-4968-92da-c932c57974c4
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
   labels:
     app: pizza-api
 spec:
   selector:
     app: pizza-api
   ports:
-    - port: 80
+    - name: http
+      port: 80
+      targetPort: 80
+    - name: https
+      port: 443
       targetPort: 80
   type: LoadBalancer

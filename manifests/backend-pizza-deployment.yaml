@@ -16,16 +16,10 @@ spec:
     spec:
       containers:
       - name: pizza-api
-        image: REPLACE_WITH_DOCKERHUB_USER/pizza-backend:00
+        image: shezcode/pizza-backend:00
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        env:
-        - name: ConnectionStrings__PizzaDb
-          valueFrom:
-            secretKeyRef:
-              name: pizza-db-secret
-              key: connection-string
   strategy:
     type: RollingUpdate
     rollingUpdate:
